@@ -1,23 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: customer
-  namespace: hotelone
+  name: user01-customer-01
   labels:
-    app: customer
+    app: user01-customer-01
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: customer
+      app: user01-customer-01
   template:
     metadata:
       labels:
-        app: customer
+        app: user01-customer-01
     spec:
       containers:
-        - name: customer
-          image: 496278789073.dkr.ecr.ap-northeast-2.amazonaws.com/hotelonel2-customer:latest
+        - name: user01-customer-01
+          image: 879772956301.dkr.ecr.ap-northeast-2.amazonaws.com/user01-customer-01:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -30,7 +29,7 @@ spec:
             - name: DATA1
               valueFrom:
                 configMapKeyRef:
-                  name: hotelcm
+                  name: user01-customer-01
                   key: text1
           readinessProbe:
             httpGet:
